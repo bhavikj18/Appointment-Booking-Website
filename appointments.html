@@ -1,0 +1,103 @@
+{% extends 'base.html' %}
+
+{% block body %}
+<style>
+/* Three columns side by side */
+.column {
+  float: left;
+  width: 70%;
+  margin: 25px 80px;
+  padding: 20px;
+}
+
+/* Display the columns below each other instead of side by side on small screens */
+@media screen and (max-width: 650px) {
+  .column {
+    width: 100%;
+    display: block;
+  }
+}
+
+/* Add some shadows to create a card effect */
+.card {
+  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
+}
+
+/* Some left and right padding inside the container */
+.container {
+  padding: 0 16px;
+}
+
+/* Clear floats */
+.container::after, .row::after {
+  content: "";
+  clear: both;
+  display: table;
+}
+
+.title {
+  color: grey;
+}
+
+.button {
+  border: none;
+  outline: 0;
+  display: inline-block;
+  padding: 8px;
+  color: white;
+  background-color: #000;
+  text-align: center;
+  cursor: pointer;
+  width: 100%;
+}
+
+.button:hover {
+  background-color: #555;
+}
+
+.full-page
+{
+  background-image: linear-gradient(rgba(0,0,0,0.7),rgba(0,0,0,.9)),url(https://c1.wallpaperflare.com/preview/195/725/262/tiles-baroque-pattern-texture.jpg);
+  background-repeat: repeat;
+}
+
+.input-field
+{
+color:white;
+width: 100%;
+padding:10px 0;
+margin:5px 0;
+border-left:0;
+border-top:0;
+border-right:0;
+border-bottom: 1px solid #999;
+outline:none;
+background: transparent;
+}
+</style>
+<body class="full-page">
+  <div class="container px-4 py-5" id="featured-3">
+   
+    <div class="row g-4 py-5 row-cols-1 row-cols-lg-3">
+    {% for person in loperson%}
+    {% if person.mydoc == True %}
+    <div class="clumn">
+    <div class="card" style="background-color:rgba(0,0,0,.5)">
+      <img src="https://www.pngall.com/wp-content/uploads/5/User-Profile-PNG-Image.png" alt="imgs" style="width:25%">
+      <div class="container" style="background-color:rgba(0,0,0,.3); color:rgba(225,225,225,.7)">
+        <h2>Dr. {{person.name}}</h2>
+        <p class="title">Doctor</p>
+        <p>{{person.details}}</p>
+        <p>{{person.mobno}}</p>
+        <p>{{person.email}}</p>
+        
+      </div>
+    </div>
+    </div>
+    {% endif%}
+    {% endfor %}
+
+  </div>
+  </div>
+</body>
+{% endblock body %}
